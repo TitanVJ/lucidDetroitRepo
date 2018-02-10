@@ -13,6 +13,7 @@ public class charCamera : MonoBehaviour {
     private Vector3 offsetX;
     Vector3 targetPos;
    
+    //Soberbar sobarBar;
 
     void Start()
     {
@@ -21,6 +22,8 @@ public class charCamera : MonoBehaviour {
         targetPos = transform.position;
         offsetY = new Vector3(0f, 1.39f, 0f);
         offsetX = new Vector3(3f, 0f, 0f);
+
+        //sobarBar = getcomponent<Soberbar>();
     }
 
     void FixedUpdate()
@@ -37,5 +40,35 @@ public class charCamera : MonoBehaviour {
 
             transform.position = Vector3.Lerp(transform.position, targetCamPos, 2f * Time.deltaTime);
         }
+        /*
+        if(){
+        
+            resolutionChange();
+        
+        }        
+        */
     }
+    /*
+    void resolutionChange(){
+
+        if(soberBar >= 0.2 && soberBar < 0.35){
+            
+        }
+        else if (soberBar >= 0.35 && soberBar < 0.45){
+
+        }
+        else if (soberBar >= 0.45 && soberBar < 0.65){
+
+        }
+        else if (soberBar >= 0.65 && soberBar < 0.77){
+
+        }
+        else if (soberBar >= 0.77 && soberBar < 1.00){
+
+        }
+
+
+
+    }
+    */
 }
