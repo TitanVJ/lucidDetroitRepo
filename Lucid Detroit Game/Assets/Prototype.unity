@@ -330,12 +330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d59b8f5b900be44bafb7a131a43140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1640295665519166, guid: 04853006e8e0a6f42837159f5ca10eb8,
-    type: 2}
-  groundPlane: {fileID: 1206081853}
-  spawnY: 2.5
-  playerObj: {fileID: 1792552026}
-  enemyDeathParticleSys: {fileID: 0}
 --- !u!4 &665388885
 Transform:
   m_ObjectHideFlags: 0
@@ -494,9 +488,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5526b082f47da48b7e021f1fb05428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPre: {fileID: 1694752555856356, guid: 142bc1a632106fa4fa74776d9de8a0b7, type: 2}
+  bulletPre: {fileID: 1694752555856356, guid: d459ac6e2bc64fd42abae88cd8d4aea1, type: 2}
   spawnPoint: {fileID: 316531263}
-  bulletSpeed: 0
+  bulletSpeed: 3
 --- !u!4 &1686721857
 Transform:
   m_ObjectHideFlags: 0
