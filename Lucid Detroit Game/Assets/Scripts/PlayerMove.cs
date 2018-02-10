@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     private PlayerShoot pShoot;
     private SpriteRenderer mySpriteRenderer;
     public Transform spawnPoint;
+	private Vector3 flipPos;
 
 
 
@@ -26,12 +27,29 @@ public class PlayerMove : MonoBehaviour
         rb.freezeRotation = true;
         pShoot = FindObjectOfType<PlayerShoot>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
+		spawnPoint = GameObject.Find("barrelTip").GetComponent<Transform>();
+		flipPos = spawnPoint.transform.localPosition;
 
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+		if(Input.GetKeyDown(KeyCode.A))
+			{
+				if(mySpriteRenderer.flipX != true)
+				flipPos.x = -(flipPos.x);
+				spawnPoint.transform.localPosition = flipPos;
+			}
+
+			if(Input.GetKeyDown(KeyCode.D))
+			{
+				if(mySpriteRenderer.flipX != false)
+				flipPos.x *= -1;
+				spawnPoint.transform.localPosition = flipPos; 
+			}
+
+
 		if(Input.GetKey(KeyCode.A))
         {
             
