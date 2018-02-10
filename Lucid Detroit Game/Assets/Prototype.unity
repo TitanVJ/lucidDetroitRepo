@@ -377,6 +377,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1467613294
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4636473175500410, guid: b8e8f4994aa0f174a88c165a4e874ee6, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.751854
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636473175500410, guid: b8e8f4994aa0f174a88c165a4e874ee6, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.2067815
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636473175500410, guid: b8e8f4994aa0f174a88c165a4e874ee6, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.07245909
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636473175500410, guid: b8e8f4994aa0f174a88c165a4e874ee6, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636473175500410, guid: b8e8f4994aa0f174a88c165a4e874ee6, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636473175500410, guid: b8e8f4994aa0f174a88c165a4e874ee6, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636473175500410, guid: b8e8f4994aa0f174a88c165a4e874ee6, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636473175500410, guid: b8e8f4994aa0f174a88c165a4e874ee6, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b8e8f4994aa0f174a88c165a4e874ee6, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &1615832088 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1912320958652026, guid: b8e8f4994aa0f174a88c165a4e874ee6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1467613294}
 --- !u!1 &1943478925
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +437,7 @@ GameObject:
   - component: {fileID: 1943478927}
   - component: {fileID: 1943478926}
   - component: {fileID: 1943478931}
+  - component: {fileID: 1943478932}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -509,3 +557,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 400
+--- !u!114 &1943478932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1943478925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5526b082f47da48b7e021f1fb05428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 1615832088}
+  bulletSpeed: 50
