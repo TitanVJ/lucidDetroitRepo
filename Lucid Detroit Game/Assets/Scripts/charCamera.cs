@@ -20,7 +20,6 @@ public class charCamera : MonoBehaviour {
         offsetRight = transform.position - player.transform.position;
         offsetLeft = transform.position + player.transform.position;
         targetPos = transform.position;
-        offsetY = new Vector3(0f, 1.39f, 0f);
         offsetX = new Vector3(3f, 0f, 0f);
 
         //sobarBar = getcomponent<Soberbar>();
@@ -30,14 +29,14 @@ public class charCamera : MonoBehaviour {
     {
         if (player && Input.GetKey(KeyCode.D))
         {
-            Vector3 targetCamPos = player.transform.position + offsetRight + offsetX;
-
+            //Vector3 targetCamPos = player.transform.position + offsetRight + offsetX;
+            Vector3 targetCamPos = new Vector3(player.transform.position.x + offsetRight.x + 3.0f, 0f, -10f);
             transform.position = Vector3.Lerp(transform.position, targetCamPos, 2f * Time.deltaTime)        ;
         }
         else if (player && Input.GetKey(KeyCode.A))
         {
-            Vector3 targetCamPos = player.transform.position + offsetLeft + 2*offsetY - offsetX;
-
+            //Vector3 targetCamPos = player.transform.position + offsetLeft + 2*offsetY - offsetX;
+            Vector3 targetCamPos = new Vector3(player.transform.position.x + offsetLeft.x + 3.0f, 0f, -10f);
             transform.position = Vector3.Lerp(transform.position, targetCamPos, 2f * Time.deltaTime);
         }
         /*
@@ -51,19 +50,19 @@ public class charCamera : MonoBehaviour {
     /*
     void resolutionChange(){
 
-        if(soberBar >= 0.2 && soberBar < 0.35){
+        if(soberBar.alcoholMeter >= 0.2 && soberBar.alcoholMeter < 0.35){
             
         }
-        else if (soberBar >= 0.35 && soberBar < 0.45){
+        else if (soberBar.alcoholMeter >= 0.35 && soberBar.alcoholMeter < 0.45){
 
         }
-        else if (soberBar >= 0.45 && soberBar < 0.65){
+        else if (soberBar.alcoholMeter >= 0.45 && soberBar.alcoholMeter < 0.65){
 
         }
-        else if (soberBar >= 0.65 && soberBar < 0.77){
+        else if (soberBar.alcoholMeter >= 0.65 && soberBar.alcoholMeter < 0.77){
 
         }
-        else if (soberBar >= 0.77 && soberBar < 1.00){
+        else if (soberBar.alcoholMeter >= 0.77 && soberBar.alcoholMeter < 1.00){
 
         }
 
