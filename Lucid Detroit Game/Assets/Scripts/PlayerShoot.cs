@@ -8,11 +8,13 @@ public class PlayerShoot : MonoBehaviour
     public Transform spawnPoint;
     public float bulletSpeed;
     private List<GameObject> bullets = new List<GameObject>();
+    private SpriteRenderer sRenderer;
 
     // Use this for initialization
     void Start ()
     {
         bulletSpeed = 3f;
+        sRenderer = GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -30,9 +32,13 @@ public class PlayerShoot : MonoBehaviour
         {
             GameObject goBullets = bullets[i];
             if(goBullets != null)
-            {
-                goBullets.transform.Translate(new Vector3(1, 0) * Time.deltaTime * bulletSpeed);
+            {   
+                if(sRenderer.flipX != true)
+                    goBullets.transform.Translate(new Vector3(1, 0) * Time.deltaTime * bulletSpeed);
+                else
+                    goBullets.transform.Translate(new Vector3(-1, 0) * Time.deltaTime * bulletSpeed);
 
+                //Removing bullets that go off screen
                 Vector3 bulletScreenView = Camera.main.WorldToScreenPoint(goBullets.transform.position);
                 if(bulletScreenView.x >= Screen.width || bulletScreenView.x <= 0)
                 {
