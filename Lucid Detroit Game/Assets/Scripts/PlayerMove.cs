@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviour
     {
         if(rb == null)
             rb = GetComponent<Rigidbody2D>();
+        rb.freezeRotation = true;
 	}
 	
 	// Update is called once per frame
@@ -28,11 +29,12 @@ public class PlayerMove : MonoBehaviour
             transform.Translate(moveSpeed * Time.deltaTime, 0.0f, 0.0f);
         }
         
-        if(Input.GetKey(KeyCode.Space) && canJump)
+        if(Input.GetKey(KeyCode.W) && canJump)
         {
             rb.AddForce(new Vector2(0f,jumpForce));
             canJump = false;
         }
+
     }
 
     void OnCollisionEnter2D (Collision2D collide)
