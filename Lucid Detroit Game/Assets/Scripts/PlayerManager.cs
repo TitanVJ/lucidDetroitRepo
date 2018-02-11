@@ -18,7 +18,7 @@ public class PlayerManager : MonoBehaviour {
     zombieManager zombieManager;
     string dogManagerTag = "dogManager";
     dogManager dogManager;
-
+    PlayerShoot playerShoot;
     bool damaged = false;
     bool isDead;
     
@@ -28,6 +28,7 @@ public class PlayerManager : MonoBehaviour {
         playerMove = FindObjectOfType<PlayerMove>();
         zombieManager = FindObjectOfType<zombieManager>();
         dogManager = FindObjectOfType<dogManager>();
+        playerShoot = FindObjectOfType<PlayerShoot>();
 	}
 	
 	// Update is called once per frame
@@ -37,16 +38,7 @@ public class PlayerManager : MonoBehaviour {
             Death();
         }
     }
-
-    //void OnTriggerStay2D(Collider2D other)
-    //{
-    //    if (other.gameObject.tag == dogManagerTag)
-    //    {
-
-    //        damaged = true;
-    //        StartCoroutine(attackSpeed());
-    //    }
-    //}
+    
     IEnumerator attackSpeed()
 	{
 
@@ -59,6 +51,21 @@ public class PlayerManager : MonoBehaviour {
 
 	}
 
+    IEnumerator buff(int i)
+    {
+        if(i == 1)
+        {
+            //power buff revert
+            yield return new WaitForSecondsRealtime(5f);
+            dmg = 10;
+        }
+        else
+        {
+            //speed buff revert
+            yield return new WaitForSecondsRealtime(5f);
+            playerShoot.bulletSpeed = 0.15f;
+        }
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == enemyBullet)//
@@ -69,12 +76,14 @@ public class PlayerManager : MonoBehaviour {
          if (other.gameObject.tag == dogManagerTag)
         {
             Debug.Log("doge");
-            //currentHealth -= dogManager.dmg;
             StartCoroutine(attackSpeed());
         }
 
-         if(other.gameObject.tag == "vodka" )
+         if(other.gameObject.tag == "vodka" )//gives you attack speed
         {
+            playerShoot.bulletSpeed = 0.1f;
+            StartCoroutine(buff(0));
+
             if(drunkLevel + 25 < 100) {
                 drunkLevel += 25;
                 Debug.Log(drunkLevel);
@@ -83,8 +92,10 @@ public class PlayerManager : MonoBehaviour {
             Destroy(other.gameObject);
         }
 
-        if (other.gameObject.tag == "tequila" )
+        if (other.gameObject.tag == "tequila" )//gives you health
         {
+            currentHealth += 5;
+
             if (drunkLevel + 20 < 100)
             {
                 drunkLevel += 20;
@@ -93,8 +104,11 @@ public class PlayerManager : MonoBehaviour {
             Destroy(other.gameObject);
         }
 
-        if (other.gameObject.tag == "jager")
+        if (other.gameObject.tag == "jager")//gives you power
         {
+            dmg = 20;
+            StartCoroutine(buff(1));
+
             if (drunkLevel + 15 < 100)
             {
                 drunkLevel += 15;
@@ -115,8 +129,6 @@ public class PlayerManager : MonoBehaviour {
             }
             Destroy(other.gameObject);
         }
-
-        //check if dead
         
     }
 

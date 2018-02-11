@@ -10,6 +10,7 @@ public class zombieManager : MonoBehaviour {
 
     string heroBullet = "heroBullet";
     PlayerManager playerManager;
+    public Animator anim; 
 
     bool isDead;
     //need player object to eventually get dmg numbers
@@ -18,8 +19,8 @@ public class zombieManager : MonoBehaviour {
 	void Start () {
         //check if cur level is dream if so then 1.5x the hp and dmg of zombie
         currentHealth = initHealth;
-        //heroBullet = GameObject.FindGameObjectWithTag("heroBullet");
         playerManager = FindObjectOfType<PlayerManager>();
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -47,7 +48,8 @@ public class zombieManager : MonoBehaviour {
     {
         isDead = true;
         //play death animations and sound
-        Destroy(gameObject);
+        anim.SetBool("Death", true);
+        Destroy(gameObject, 1);
         
     }
 
