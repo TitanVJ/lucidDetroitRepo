@@ -1,0 +1,148 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class charCamera : MonoBehaviour {
+
+
+    public float cameraSpeed;
+    public GameObject player;
+    public Vector3 offsetRight;
+    public Vector3 offsetLeft;
+    private Vector3 offsetY;
+    private Vector3 offsetX;
+    private int currentDrunkenessLevel = 0;
+    Vector3 targetPos;
+
+    public float zoomSize = 5;
+
+    PlayerManager PlayerManager;
+
+    void Start()
+    {
+        offsetRight = transform.position - player.transform.position;
+        offsetLeft = transform.position + player.transform.position;
+        targetPos = transform.position;
+        offsetX = new Vector3(3f, 0f, 0f);
+
+        //sobarBar = getcomponent<Soberbar>();
+    }
+
+    void FixedUpdate()
+    {
+        if (player && Input.GetKey(KeyCode.D))
+        {
+            //Vector3 targetCamPos = player.transform.position + offsetRight + offsetX;
+            Vector3 targetCamPos = new Vector3(player.transform.position.x + offsetRight.x + 3.0f, 0f, -10f);
+            transform.position = Vector3.Lerp(transform.position, targetCamPos, 2f * Time.deltaTime);
+
+        }
+        else if (player && Input.GetKey(KeyCode.A))
+        {
+            //Vector3 targetCamPos = player.transform.position + offsetLeft + 2*offsetY - offsetX;
+            Vector3 targetCamPos = new Vector3(player.transform.position.x + offsetLeft.x + 3.0f, 0f, -10f);
+            transform.position = Vector3.Lerp(transform.position, targetCamPos, 2f * Time.deltaTime);
+        }
+
+        if(PlayerManager.drunkLevel > 0.2)
+        {
+        
+            resolutionChange();
+        
+        }        
+
+    }
+
+    void zoomIn()
+    {
+        GetComponent<Camera> ().orthographicSize = zoomSize-1;
+    }
+    void zoomOut()
+    {
+        GetComponent<Camera>().orthographicSize = zoomSize + 1;
+    }
+
+    void resolutionChange()
+    {
+        //Drunk Level 0
+        if(PlayerManager.drunkLevel < 0.2) {
+            if(currentDrunkenessLevel == 1) {
+                zoomOut();
+                currentDrunkenessLevel = 0;
+            }
+        }
+        //Drunk Level 1
+        if (PlayerManager.drunkLevel  >= 0.2 && PlayerManager.drunkLevel < 0.35)
+        {
+            if(currentDrunkenessLevel == 0) {
+                zoomIn();
+                currentDrunkenessLevel++;
+            }
+            if(currentDrunkenessLevel == 2) {
+                zoomOut();
+                currentDrunkenessLevel--;
+
+            }
+        }
+        //Drunk Level 2
+        else if (PlayerManager.drunkLevel >= 0.35 && PlayerManager.drunkLevel < 0.45)
+        {
+            if (currentDrunkenessLevel == 1)
+            {
+                zoomIn();
+                currentDrunkenessLevel++;
+            }
+            if (currentDrunkenessLevel == 3)
+            {
+                zoomOut();
+                currentDrunkenessLevel--;
+            }
+
+        }
+        //Drunk level 3
+        else if (PlayerManager.drunkLevel >= 0.45 && PlayerManager.drunkLevel < 0.65)
+        {
+            if (currentDrunkenessLevel == 2)
+            {
+                zoomIn();
+                currentDrunkenessLevel++;
+            }
+            if (currentDrunkenessLevel == 4)
+            {
+                zoomOut();
+                currentDrunkenessLevel--;
+            }
+
+        }
+        //Drunk Level 4
+        else if (PlayerManager.drunkLevel >= 0.65 && PlayerManager.drunkLevel < 0.77)
+        {
+            if (currentDrunkenessLevel == 3)
+            {
+                zoomIn();
+                currentDrunkenessLevel++;
+            }
+            if (currentDrunkenessLevel == 5)
+            {
+                zoomOut();
+                currentDrunkenessLevel--;
+            }
+
+        }
+        //Drunk Level 5
+        else if (PlayerManager.drunkLevel >= 0.77 && PlayerManager.drunkLevel < 1.00)
+        {
+            if (currentDrunkenessLevel == 0)
+            {
+                zoomIn();
+                currentDrunkenessLevel++;
+            }
+            if (currentDrunkenessLevel == 2)
+            {
+                zoomOut();
+                currentDrunkenessLevel--;
+            }
+
+        }
+    }
+}

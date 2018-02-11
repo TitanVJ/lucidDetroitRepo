@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class PlayerManager : MonoBehaviour {
 
     public int initHealth = 100;
+    public int drunkLevel = 0;
     public int currentHealth;
-    public float drunkLevel; //need a startaing value
 
     public int dmg = 10;
     public Slider healthBar;
@@ -52,33 +52,49 @@ public class PlayerManager : MonoBehaviour {
             currentHealth -= other.transform.parent.gameObject.GetComponent<dogManager>().dmg;
         }
 
-         if(other.gameObject.tag == "vodka")
+         if(other.gameObject.tag == "vodka" )
         {
-            Debug.Log("blyatt");
-            //do the tthings
+            if(drunkLevel + 25 < 100) {
+                drunkLevel += 25;
+                Debug.Log(drunkLevel);
+            }
+            
             Destroy(other.gameObject);
         }
 
-        if (other.gameObject.tag == "tequila")
+        if (other.gameObject.tag == "tequila" )
         {
-            Debug.Log("blyatt");
-            //do the tthings
+            if (drunkLevel + 20 < 100)
+            {
+                drunkLevel += 20;
+            }
+            
             Destroy(other.gameObject);
         }
 
         if (other.gameObject.tag == "jager")
         {
-            Debug.Log("blyatt");
-            //do the tthings
+            if (drunkLevel + 15 < 100)
+            {
+                drunkLevel += 15;
+            }
+            
             Destroy(other.gameObject);
         }
 
         if (other.gameObject.tag == "water")
         {
-            Debug.Log("blyatt");
-            //do the tthings
+            if (drunkLevel - 15 > 0)
+            {
+                drunkLevel -= 15;
+            }
+            if (drunkLevel - 15 < 0)
+            {
+                drunkLevel = 0;
+            }
             Destroy(other.gameObject);
         }
+
         //check if dead
         if (currentHealth <= 0 && !isDead)
         {
