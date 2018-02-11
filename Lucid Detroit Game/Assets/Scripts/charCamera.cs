@@ -12,7 +12,9 @@ public class charCamera : MonoBehaviour {
     private Vector3 offsetY;
     private Vector3 offsetX;
     Vector3 targetPos;
-   
+
+    public float zoomSize = 5;
+
     //Soberbar sobarBar;
 
     void Start()
@@ -31,7 +33,8 @@ public class charCamera : MonoBehaviour {
         {
             //Vector3 targetCamPos = player.transform.position + offsetRight + offsetX;
             Vector3 targetCamPos = new Vector3(player.transform.position.x + offsetRight.x + 3.0f, 0f, -10f);
-            transform.position = Vector3.Lerp(transform.position, targetCamPos, 2f * Time.deltaTime)        ;
+            transform.position = Vector3.Lerp(transform.position, targetCamPos, 2f * Time.deltaTime);
+
         }
         else if (player && Input.GetKey(KeyCode.A))
         {
@@ -39,6 +42,7 @@ public class charCamera : MonoBehaviour {
             Vector3 targetCamPos = new Vector3(player.transform.position.x + offsetLeft.x + 3.0f, 0f, -10f);
             transform.position = Vector3.Lerp(transform.position, targetCamPos, 2f * Time.deltaTime);
         }
+
         /*
         if(){
         
@@ -47,6 +51,12 @@ public class charCamera : MonoBehaviour {
         }        
         */
     }
+    /*
+    void zoomIn()
+    {
+        GetComponent<Camera> ().orthographicSize = zoomSize-1;
+    }
+    */
     /*
     void resolutionChange(){
 
