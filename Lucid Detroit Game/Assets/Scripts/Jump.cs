@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
-    public float jumpVelocity = 6.0f;
+    public float jumpVelocity = 500.0f;
     private bool canJump = true;
+    private Rigidbody2D rb;
 
 	// Use this for initialization
 	void Start ()
     {
-		
+        rb = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
@@ -18,7 +19,7 @@ public class Jump : MonoBehaviour
     {
 		if(Input.GetKey(KeyCode.W) && canJump)
         {
-            GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpVelocity;
+            rb.AddForce(Vector2.up * jumpVelocity, ForceMode2D.Impulse);
             canJump = false;
         }
 	}
