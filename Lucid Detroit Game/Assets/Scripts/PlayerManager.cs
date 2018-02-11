@@ -19,7 +19,6 @@ public class PlayerManager : MonoBehaviour {
     zombieManager zombieManager;
     string dogManagerTag = "dogManager";
     dogManager dogManager;
-    PlayerShoot playerShoot;
     bool damaged = false;
     bool isDead;
     
@@ -29,7 +28,6 @@ public class PlayerManager : MonoBehaviour {
         playerMove = FindObjectOfType<PlayerMove>();
         zombieManager = FindObjectOfType<zombieManager>();
         dogManager = FindObjectOfType<dogManager>();
-        playerShoot = FindObjectOfType<PlayerShoot>();
         //healthBar = GameObject.FindGameObjectWithTag("healthBar");
         //drunkBar = GameObject.FindGameObjectWithTag("drunkBar");
 	}
@@ -40,8 +38,8 @@ public class PlayerManager : MonoBehaviour {
         {
             Death();
         }
-	healthBar.value = currentHealth;
-	drunkBar.value = drunkLevel;
+	//healthBar.value = currentHealth;
+	//drunkBar.value = drunkLevel;
     }
     
     IEnumerator attackSpeed()
@@ -68,7 +66,7 @@ public class PlayerManager : MonoBehaviour {
         {
             //speed buff revert
             yield return new WaitForSecondsRealtime(5f);
-            playerShoot.bulletSpeed = 0.15f;
+            playerMove.fireRate = 0.15f;
         }
     }
     void OnTriggerEnter2D(Collider2D other)
@@ -86,7 +84,7 @@ public class PlayerManager : MonoBehaviour {
 
          if(other.gameObject.tag == "vodka" )//gives you attack speed
         {
-            playerShoot.bulletSpeed = 0.1f;
+            playerMove.fireRate = 0.1f;
             StartCoroutine(buff(0));
 
             if(drunkLevel + 25 < 100) {

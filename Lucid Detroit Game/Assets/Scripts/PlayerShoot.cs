@@ -16,7 +16,7 @@ public class PlayerShoot : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        bulletSpeed = 0.15f;
+        bulletSpeed = 3f;
 		playerRenderer = GameObject.Find("Player").GetComponent<SpriteRenderer>();
 	}
 	
