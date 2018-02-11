@@ -28,7 +28,8 @@ public class Enemy : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update ()
-    {
+    {   
+        
         switch (_currState)
         {
             case EnemyState.Idle:
