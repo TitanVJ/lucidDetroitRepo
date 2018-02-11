@@ -523,6 +523,7 @@ GameObject:
   - component: {fileID: 1792552031}
   - component: {fileID: 1792552029}
   - component: {fileID: 1792552030}
+  - component: {fileID: 1792552033}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -564,7 +565,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 92e6f7c72fb7cfc4c869f5d7c097ef8e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f4d6ff4d6a40114ba708af70b805879, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -581,8 +582,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1792552026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.54, y: -1.39, z: 0}
-  m_LocalScale: {x: 0.56059766, y: 0.56059766, z: 0.56059766}
+  m_LocalPosition: {x: -5.54, y: 0.36, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 316531263}
   m_Father: {fileID: 0}
@@ -603,8 +604,9 @@ MonoBehaviour:
   jumpForce: 10
   fallMultiplier: 9
   lowJumpMultiplier: 2
-  spawnPoint: {fileID: 0}
-  fireRate: 0.15
+  spawnPoint: {fileID: 316531263}
+  fireRate: 0
+  animator: {fileID: 1792552033}
 --- !u!114 &1792552030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,6 +619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpVelocity: 50
+  animator: {fileID: 1792552033}
 --- !u!61 &1792552031
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -629,18 +632,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.17253685}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.79, y: 7.02}
+    oldSize: {x: 20.19, y: 32.79}
     newSize: {x: 9.79, y: 7.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.9, y: 7.47}
+  m_Size: {x: 21.153759, y: 34.500797}
   m_EdgeRadius: 0
 --- !u!50 &1792552032
 Rigidbody2D:
@@ -662,3 +665,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &1792552033
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1792552026}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c0a5e8ab1fa9c948a4d426233e891c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
