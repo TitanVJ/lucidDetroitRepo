@@ -12,7 +12,7 @@ public class charCamera : MonoBehaviour {
     private Vector3 offsetY;
     private Vector3 offsetX;
     private int currentDrunkenessLevel = 0;
-    Vector3 targetPos;
+    //Vector3 targetPos;
 
     public float zoomSize = 5;
 
@@ -22,7 +22,7 @@ public class charCamera : MonoBehaviour {
     {
         offsetRight = transform.position - player.transform.position;
         offsetLeft = transform.position + player.transform.position;
-        targetPos = transform.position;
+        //targetPos = transform.position;
         playerManager = FindObjectOfType<PlayerManager>();
         offsetX = new Vector3(3f, 0f, 0f);
     }

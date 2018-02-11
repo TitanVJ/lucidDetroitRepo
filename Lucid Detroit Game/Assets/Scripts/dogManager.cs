@@ -12,6 +12,7 @@ public class dogManager : MonoBehaviour
     string heroBullet = "heroBullet";
     string player = "Player";
     PlayerManager playerManager;
+    public Animator anim;
 
     bool isDead;
     //need player object to eventually get dmg numbers
@@ -24,6 +25,7 @@ public class dogManager : MonoBehaviour
         //player = GameObject.FindGameObjectWithTag("Player");
         //heroBullet = GameObject.FindGameObjectWithTag("heroBullet");
         playerManager = FindObjectOfType<PlayerManager>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -37,6 +39,7 @@ public class dogManager : MonoBehaviour
         if (other.gameObject.tag == heroBullet)
         {
             currentHealth -= playerManager.dmg;
+            Debug.Log("hit");
             Destroy(other.gameObject);
             if (currentHealth <= 0 && !isDead)
             {
@@ -47,6 +50,8 @@ public class dogManager : MonoBehaviour
         if (other.gameObject.tag == player)//need on exist to stop this animation
         {
             //play attacking animation and sounds
+            anim.SetBool("Attacking", true);
+
         }
     }
 
@@ -55,13 +60,15 @@ public class dogManager : MonoBehaviour
         if (other.gameObject.tag == player)
         {
             //stop playing attacking animation cuz ur no longer near protag
+            //anim.SetBool("Attacking", false);
         }
     }
     void Death()
     {
         isDead = true;
         //play death animations and sound
-        Destroy(gameObject);
+        anim.SetBool("Death", true);
+        Destroy(gameObject, 1);
 
     }
 
