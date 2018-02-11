@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Lucid Detroit Game/Assets/Scripts/dogManager.cs.meta
+guid: ef3764a8f38adb54a920870464fa0b8d
+timeCreated: 1518316448
+=======
+guid: ad46a1eb4357e6144baa578e050ff486
+timeCreated: 1518310798
+>>>>>>> f6e0fe5b92a25722a7f0ee255c30a3d5b286b41c:Lucid Detroit Game/Assets/Scripts/PlayerHealth.cs.meta
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

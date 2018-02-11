@@ -4,20 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6eebfc14b6c62e7d1ec10d48f77a5e7c44e15e98
     public int initHealth = 100;
     public int currentHealth;
-    public Slider healathBar;
+
+    public int dmg = 10;
+    public Slider healthBar;
     //assets for anims and audio
 
     PlayerMove playerMove;
+    GameObject enemyBullet;
+    zombieManager zombieManager;
+    dogManager dogManager;
+
     bool isDead;
     bool damaged;
     
 	// Use this for initialization
 	void Start () {
         currentHealth = initHealth;
+        enemyBullet = GameObject.FindGameObjectWithTag("enemyBullet");
         playerMove = GetComponent<PlayerMove>();
+        zombieManager = GetComponent<zombieManager>();
+        dogManager = GetComponent<dogManager>();
 	}
 	
 	// Update is called once per frame
@@ -25,13 +37,19 @@ public class PlayerManager : MonoBehaviour {
         
 	}
 
-    public void takeDamage(int dmgAmount)
+    void OnTriggerEnter(Collider other)
     {
-        //damaged = true;
-        currentHealth -= dmgAmount;
-        healathBar.value = currentHealth;
+        if (other.gameObject == enemyBullet)//
+        {
+            currentHealth -= zombieManager.dmg;
+        }
+        else if (other.gameObject == dogManager)
+        {
+            currentHealth -= dogManager.dmg;
+        }
 
-        if(currentHealth <= 0 && !isDead)
+        //check if dead
+        if (currentHealth <= 0 && !isDead)
         {
             Death();
         }
@@ -42,5 +60,9 @@ public class PlayerManager : MonoBehaviour {
         isDead = true;
         //play death anims and sounds
         playerMove.enabled = false;
+
+        //maybe add particle effect later
+        //for now just have destroy
+        Destroy(gameObject);
     }
 }
