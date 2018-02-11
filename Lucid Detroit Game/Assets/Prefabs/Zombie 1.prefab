@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 50132789995562762}
   - component: {fileID: 61184810097247142}
   - component: {fileID: 114396663696459694}
-  - component: {fileID: 114837313919169760}
+  - component: {fileID: 114932208261138266}
   m_Layer: 0
   m_Name: Zombie 1
   m_TagString: Untagged
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1806762663297054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.80088, y: 0.3524258, z: 0}
+  m_LocalPosition: {x: 18.815147, y: 1.9691314, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 4531994963735108}
@@ -106,7 +106,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.9657583}
+  m_Offset: {x: 1.570343, y: 1.9657593}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -117,7 +117,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 40.9, y: 36.968483}
+  m_Size: {x: 23.101997, y: 36.968483}
   m_EdgeRadius: 0
 --- !u!95 &95701992195644016
 Animator:
@@ -149,10 +149,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initHealth: 50
   currentHealth: 0
-  dmg: 20
-  fireRate: 0.8
+  dmg: 5
+  fireRate: 2
   anim: {fileID: 0}
---- !u!114 &114837313919169760
+--- !u!114 &114932208261138266
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -160,14 +160,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1806762663297054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e14e951ca293ea469b2f48d7d1aaf19, type: 3}
+  m_Script: {fileID: 11500000, guid: 8586dbb180efa074abc8d326bb659b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj: {fileID: 0}
-  attackDistance: 7
+  attackDistance: 15
   retreatDistance: 15
   moveSpeed: 5
-  bulletPre: {fileID: 1694752555856356, guid: 7c7427c0ccabf6e4abe92cfeaac78784, type: 2}
+  bulletPre: {fileID: 1456905591556954, guid: 72550f19e3dc63c47a9160b39555507a, type: 2}
   spawnPoint: {fileID: 4531994963735108}
 --- !u!212 &212383830379439808
 SpriteRenderer:

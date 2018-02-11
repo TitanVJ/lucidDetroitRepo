@@ -109,14 +109,14 @@ public class charCamera : MonoBehaviour {
         if (player && Input.GetKey(KeyCode.D))
         {
             //Vector3 targetCamPos = player.transform.position + offsetRight + offsetX;
-            Vector3 targetCamPos = new Vector3(player.transform.position.x + offsetRight.x + 3.0f, 0f, -10f);
+            Vector3 targetCamPos = new Vector3(player.transform.position.x + offsetRight.x + 3.0f, 2f, -10f);
             transform.position = Vector3.Lerp(transform.position, targetCamPos, 2f * Time.deltaTime);
 
         }
         else if (player && Input.GetKey(KeyCode.A))
         {
             //Vector3 targetCamPos = player.transform.position + offsetLeft + 2*offsetY - offsetX;
-            Vector3 targetCamPos = new Vector3(player.transform.position.x + offsetLeft.x + 3.0f, 0f, -10f);
+            Vector3 targetCamPos = new Vector3(player.transform.position.x + offsetLeft.x + 3.0f, 2f, -10f);
             transform.position = Vector3.Lerp(transform.position, targetCamPos, 2f * Time.deltaTime);
         }
 
