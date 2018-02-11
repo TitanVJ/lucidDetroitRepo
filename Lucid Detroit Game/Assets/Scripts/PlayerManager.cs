@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour {
 
     public int dmg = 10;
     public Slider healthBar;
+    public Slider drunkBar;
     //assets for anims and audio
 
     PlayerMove playerMove;
@@ -36,6 +37,8 @@ public class PlayerManager : MonoBehaviour {
         {
             Death();
         }
+	healthBar.value = currentHealth;
+	drunkBar.value = drunkLevel;
     }
 
     //void OnTriggerStay2D(Collider2D other)
