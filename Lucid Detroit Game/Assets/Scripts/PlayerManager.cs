@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour {
     //assets for anims and audio
 
     PlayerMove playerMove;
+    GameObject enemyBullet;
     zombieManager zombieManager;
     dogManager dogManager;
 
@@ -21,7 +22,10 @@ public class PlayerManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         currentHealth = initHealth;
+        enemyBullet = GameObject.FindGameObjectWithTag("enemyBullet");
         playerMove = GetComponent<PlayerMove>();
+        zombieManager = GetComponent<zombieManager>();
+        dogManager = GetComponent<dogManager>();
 	}
 	
 	// Update is called once per frame
@@ -31,24 +35,17 @@ public class PlayerManager : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == zombieManager)
+        if (other.gameObject == enemyBullet)//
         {
-
+            currentHealth -= zombieManager.dmg;
         }
         else if (other.gameObject == dogManager)
         {
-
+            currentHealth -= dogManager.dmg;
         }
-    }
 
-
-    public void takeDamage(int dmgAmount)
-    {
-        //damaged = true;
-        currentHealth -= dmgAmount;
-        healthBar.value = currentHealth;
-
-        if(currentHealth <= 0 && !isDead)
+        //check if dead
+        if (currentHealth <= 0 && !isDead)
         {
             Death();
         }
@@ -59,5 +56,9 @@ public class PlayerManager : MonoBehaviour {
         isDead = true;
         //play death anims and sounds
         playerMove.enabled = false;
+
+        //maybe add particle effect later
+        //for now just have destroy
+        Destroy(gameObject);
     }
 }
