@@ -14,7 +14,6 @@ public class EnemySpawner : MonoBehaviour
     private Vector3 _spawnBounds;
     public GameObject playerObj;
 
-    public GameObject enemyDeathParticleSys;
 
     private void Awake()
     {
@@ -62,30 +61,6 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public void SpawnDeathParticleSystem(GameObject enemy)
-    {
-        Color curColour = enemy.GetComponent<MeshRenderer>().material.color;
-        float r = Random.Range(Mathf.Clamp(curColour.r - 0.1f, 0.0f, 1.0f), Mathf.Clamp(curColour.r + 0.1f, 0.0f, 1.0f));
-        float g = Random.Range(Mathf.Clamp(curColour.g - 0.1f, 0.0f, 1.0f), Mathf.Clamp(curColour.g + 0.1f, 0.0f, 1.0f));
-        float b = Random.Range(Mathf.Clamp(curColour.b - 0.1f, 0.0f, 1.0f), Mathf.Clamp(curColour.b + 0.1f, 0.0f, 1.0f));
-        Color otherColour = new Color(r, g, b);
-
-
-        if (enemyDeathParticleSys != null)
-        {
-            GameObject obj = Instantiate(enemyDeathParticleSys, enemy.transform.position, Quaternion.identity);
-            ParticleSystem ps = obj.GetComponent<ParticleSystem>();
-            ParticleSystem.MainModule main = ps.main;
-            ParticleSystem.MinMaxGradient mainColourGradient = main.startColor;
-            mainColourGradient.colorMin = curColour;
-            mainColourGradient.colorMax = otherColour;
-            main.startColor = mainColourGradient;
-
-            ps.Emit(100);
-            Destroy(ps.gameObject, ps.main.startLifetime.constantMax);
-
-        }
-    }
 
     private Vector3 FindSpawnPosition()
     {

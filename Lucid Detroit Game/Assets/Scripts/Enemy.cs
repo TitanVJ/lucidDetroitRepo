@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour
                 break;
             case EnemyState.Dead:
                 // Generate particle system.
-                EnemySpawner.instance.SpawnDeathParticleSystem(gameObject);
+
                 break;
             default:
                 break;
