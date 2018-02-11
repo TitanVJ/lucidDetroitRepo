@@ -7,6 +7,7 @@ public class Jump : MonoBehaviour
     public float jumpVelocity = 500.0f;
     private bool canJump = true;
     private Rigidbody2D rb;
+    public Animator animator;
 
 	// Use this for initialization
 	void Start ()
@@ -22,7 +23,17 @@ public class Jump : MonoBehaviour
             rb.AddForce(Vector2.up * jumpVelocity, ForceMode2D.Impulse);
             canJump = false;
         }
-	}
+
+        if(!canJump)
+        {
+            animator.SetBool("Jump", true);
+        }
+        else
+        {
+            animator.SetBool("Jump", false);
+
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

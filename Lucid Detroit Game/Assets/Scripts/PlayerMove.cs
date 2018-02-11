@@ -14,6 +14,7 @@ public class PlayerMove : MonoBehaviour
     public Transform spawnPoint;
 	private Vector3 flipPos;
 	public float fireRate;
+    public Animator animator;
 
 
 
@@ -54,18 +55,25 @@ public class PlayerMove : MonoBehaviour
 
 		if(Input.GetKey(KeyCode.A))
         {
-            
-            transform.Translate(-moveSpeed * Time.deltaTime, 0.0f, 0.0f);
             mySpriteRenderer.flipX = true;
-
+            transform.Translate(-moveSpeed * Time.deltaTime, 0.0f, 0.0f);
+            animator.SetBool("Walk", true);
         }
+        else
+        {
+            animator.SetBool("Walk", false);
+        }
+
         if (Input.GetKey(KeyCode.D))
         {
             mySpriteRenderer.flipX = false;
             transform.Translate(moveSpeed * Time.deltaTime, 0.0f, 0.0f);
-
+            animator.SetBool("Walk", true);
         }
-
+        else
+        {
+            animator.SetBool("Walk", false);
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {

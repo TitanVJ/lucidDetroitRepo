@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour {
+public class PlayerManager : MonoBehaviour {
+
     public int initHealth = 100;
     public int currentHealth;
     public Slider healathBar;
