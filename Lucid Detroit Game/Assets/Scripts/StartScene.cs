@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor.SceneManagement;
 
 public class StartScene : MonoBehaviour
 {
@@ -9,6 +10,6 @@ public class StartScene : MonoBehaviour
     public void LoadScene(int level)
     {
         loadingImage.SetActive(true);
-        Application.LoadLevel(level);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(level);
     }
 }

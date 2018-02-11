@@ -16,23 +16,33 @@ public class PlayerManager : MonoBehaviour {
     PlayerMove playerMove;
     string enemyBullet = "enemyBullet";
     zombieManager zombieManager;
-    string dogManager = "dogManager";
+    string dogManagerTag = "dogManager";
+    dogManager dogManager;
 
     bool isDead;
-    bool damaged;
+    bool damagedByDog = false;
     
 	// Use this for initialization
 	void Start () {
         currentHealth = initHealth;
         playerMove = FindObjectOfType<PlayerMove>();
         zombieManager = FindObjectOfType<zombieManager>();
-        //dogManager = FindObjectOfType<dogManager>();
+        dogManager = FindObjectOfType<dogManager>();
 	}
 	
 	// Update is called once per frame
 	void Update () {//dmg indicators. update the slider for health
         
-	}
+        if(damagedByDog)
+        {
+            currentHealth -= dogManager.dmg;
+
+        }
+        if (currentHealth <= 0 && !isDead)
+        {
+            Death();
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -46,10 +56,10 @@ public class PlayerManager : MonoBehaviour {
         {
             currentHealth -= zombieManager.dmg;
         }
-         if (other.gameObject.tag == dogManager)
+         if (other.gameObject.tag == dogManagerTag)
         {
             Debug.Log("doge");
-            currentHealth -= other.transform.parent.gameObject.GetComponent<dogManager>().dmg;
+            damagedByDog = true;
         }
 
          if(other.gameObject.tag == "vodka" )
@@ -96,10 +106,7 @@ public class PlayerManager : MonoBehaviour {
         }
 
         //check if dead
-        if (currentHealth <= 0 && !isDead)
-        {
-            Death();
-        }
+        
     }
 
     void Death()
