@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour {
     //assets for anims and audio
 
     PlayerMove playerMove;
-    GameObject enemyBullet;
+    string enemyBullet = "enemyBuller";
     zombieManager zombieManager;
     dogManager dogManager;
 
@@ -22,10 +22,10 @@ public class PlayerManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         currentHealth = initHealth;
-        enemyBullet = GameObject.FindGameObjectWithTag("enemyBullet");
-        playerMove = GetComponent<PlayerMove>();
-        zombieManager = GetComponent<zombieManager>();
-        dogManager = GetComponent<dogManager>();
+       // enemyBullet = GameObject.FindGameObjectWithTag("enemyBullet");
+        playerMove = FindObjectOfType<PlayerMove>();
+        zombieManager = FindObjectOfType<zombieManager>();
+        dogManager = FindObjectOfType<dogManager>();
 	}
 	
 	// Update is called once per frame
@@ -33,13 +33,13 @@ public class PlayerManager : MonoBehaviour {
         
 	}
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject == enemyBullet)//
-        {
-            currentHealth -= zombieManager.dmg;
-        }
-        else if (other.gameObject == dogManager)
+        //if (other.gameObject.tag == enemyBullet)//
+        //{
+        //    currentHealth -= zombieManager.dmg;
+        //}
+         if (other.gameObject == dogManager)
         {
             currentHealth -= dogManager.dmg;
         }

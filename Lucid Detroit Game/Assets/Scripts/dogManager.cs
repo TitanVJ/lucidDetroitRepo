@@ -9,8 +9,8 @@ public class dogManager : MonoBehaviour
     public int dmg = 5;
     public float fireRate = 0.5f;
 
-    GameObject heroBullet;
-    GameObject player;
+    string heroBullet = "heroBullet";
+    string player = "Player";
     PlayerManager playerManager;
 
     bool isDead;
@@ -21,9 +21,9 @@ public class dogManager : MonoBehaviour
     {
         //check if cur level is dream if so then 1.5x the hp and dmg of zombie
         currentHealth = initHealth;
-        player = GameObject.FindGameObjectWithTag("Player");
-        heroBullet = GameObject.FindGameObjectWithTag("heroBullet");
-        playerManager = GetComponent<PlayerManager>();
+        //player = GameObject.FindGameObjectWithTag("Player");
+        //heroBullet = GameObject.FindGameObjectWithTag("heroBullet");
+        playerManager = FindObjectOfType<PlayerManager>();
     }
 
     // Update is called once per frame
@@ -32,9 +32,9 @@ public class dogManager : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject == heroBullet)
+        if (other.gameObject.tag == heroBullet)
         {
             currentHealth -= playerManager.dmg;
             if (currentHealth <= 0 && !isDead)
@@ -43,15 +43,15 @@ public class dogManager : MonoBehaviour
             }
 
         }
-        if (other.gameObject == player)//need on exist to stop this animation
+        if (other.gameObject.tag == player)//need on exist to stop this animation
         {
             //play attacking animation and sounds
         }
     }
 
-    void OnTriggerExit(Collider other)
+    void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject == player)
+        if (other.gameObject.tag == player)
         {
             //stop playing attacking animation cuz ur no longer near protag
         }

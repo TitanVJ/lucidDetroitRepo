@@ -8,7 +8,7 @@ public class zombieManager : MonoBehaviour {
     public int dmg = 20;
     public float fireRate = 1f;
 
-    GameObject heroBullet;
+    string heroBullet = "heroBullet";
     PlayerManager playerManager;
 
     bool isDead;
@@ -18,8 +18,8 @@ public class zombieManager : MonoBehaviour {
 	void Start () {
         //check if cur level is dream if so then 1.5x the hp and dmg of zombie
         currentHealth = initHealth;
-        heroBullet = GameObject.FindGameObjectWithTag("heroBullet");
-        playerManager = GetComponent<PlayerManager>();
+        //heroBullet = GameObject.FindGameObjectWithTag("heroBullet");
+        playerManager = FindObjectOfType<PlayerManager>();
 	}
 	
 	// Update is called once per frame
@@ -27,10 +27,11 @@ public class zombieManager : MonoBehaviour {
 		
 	}
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject == heroBullet)
+        if(other.gameObject.tag == heroBullet)
         {
+            Debug.Log("ay");
             currentHealth -= playerManager.dmg;
             if(currentHealth <= 0 && !isDead)
             {
