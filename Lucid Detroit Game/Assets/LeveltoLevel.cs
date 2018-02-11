@@ -9,7 +9,7 @@ public class LeveltoLevel : MonoBehaviour
     private string elevator = "elevator";
     private string elevator2 = "elevator2";
     private string secondfloor = "secondfloor";
-    // Use this for initialization
+	private string final = "final";
     void Start()
     {
 
@@ -36,11 +36,11 @@ public class LeveltoLevel : MonoBehaviour
         {
             SceneManager.LoadScene(3);
         }
-        /*
-        if(!finalboss){
+
+		if(other.gameObject.tag == final){
             SceneManager.LoadScene(4);
         } 
-         */
+   
     }
 
 }

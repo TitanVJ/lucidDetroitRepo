@@ -370,7 +370,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 896db29e1b43ebc4b8b8e00ce5037ba6, type: 2}
+  - {fileID: 2100000, guid: 9df254984ce0676479267ed18ec3a37d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 1818734198}
   m_Layer: 0
   m_Name: LevelSwitch
-  m_TagString: elevator2
+  m_TagString: final
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -801,6 +801,17 @@ GameObject:
   m_PrefabParentObject: {fileID: 1726095401495842, guid: 1c40076b299736d4b9cf6032c10b7de1,
     type: 2}
   m_PrefabInternal: {fileID: 718397124}
+--- !u!114 &2046001351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2046001350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6efc0dda8ef84c647aa5b07beadf3b9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2046001352
 MonoBehaviour:
   m_ObjectHideFlags: 0
