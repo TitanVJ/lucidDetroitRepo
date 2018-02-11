@@ -6,6 +6,13 @@ TagManager:
   tags:
   - Floor
   - heroBullet
+  - enemyBullet
+  - dogManager
+  - zombieManager
+  - vodka
+  - tequila
+  - jager
+  - water
   layers:
   - Default
   - TransparentFX

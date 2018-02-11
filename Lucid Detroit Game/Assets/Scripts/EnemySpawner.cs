@@ -13,11 +13,12 @@ public class EnemySpawner : MonoBehaviour
 
     private Vector3 _spawnBounds;
     public GameObject playerObj;
-
+    
 
     private void Awake()
     {
         instance = this;
+        //playerObj = FindObject
     }
 
     // Use this for initialization

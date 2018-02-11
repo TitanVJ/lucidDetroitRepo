@@ -7,15 +7,16 @@ public class PlayerManager : MonoBehaviour {
 
     public int initHealth = 100;
     public int currentHealth;
+    public float drunkLevel; //need a startaing value
 
     public int dmg = 10;
     public Slider healthBar;
     //assets for anims and audio
 
     PlayerMove playerMove;
-    string enemyBullet = "enemyBuller";
+    string enemyBullet = "enemyBullet";
     zombieManager zombieManager;
-    dogManager dogManager;
+    string dogManager = "dogManager";
 
     bool isDead;
     bool damaged;
@@ -23,10 +24,9 @@ public class PlayerManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         currentHealth = initHealth;
-       // enemyBullet = GameObject.FindGameObjectWithTag("enemyBullet");
         playerMove = FindObjectOfType<PlayerMove>();
         zombieManager = FindObjectOfType<zombieManager>();
-        dogManager = FindObjectOfType<dogManager>();
+        //dogManager = FindObjectOfType<dogManager>();
 	}
 	
 	// Update is called once per frame
@@ -36,15 +36,49 @@ public class PlayerManager : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        //if (other.gameObject.tag == enemyBullet)//
+        //if(other.gameObject.tag == "heroBullet")//delete the bullet if it hits the player:: its buggy rn czu it delets rnightwaya at spnw
         //{
-        //    currentHealth -= zombieManager.dmg;
-        //}
-         if (other.gameObject == dogManager)
+        //    Debug.Log("shig");
+        //    //Destroy(other.gameObject);
+
+    //}
+        if (other.gameObject.tag == enemyBullet)//
         {
-            currentHealth -= dogManager.dmg;
+            currentHealth -= zombieManager.dmg;
+        }
+         if (other.gameObject.tag == dogManager)
+        {
+            Debug.Log("doge");
+            currentHealth -= other.transform.parent.gameObject.GetComponent<dogManager>().dmg;
         }
 
+         if(other.gameObject.tag == "vodka")
+        {
+            Debug.Log("blyatt");
+            //do the tthings
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag == "tequila")
+        {
+            Debug.Log("blyatt");
+            //do the tthings
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag == "jager")
+        {
+            Debug.Log("blyatt");
+            //do the tthings
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag == "water")
+        {
+            Debug.Log("blyatt");
+            //do the tthings
+            Destroy(other.gameObject);
+        }
         //check if dead
         if (currentHealth <= 0 && !isDead)
         {

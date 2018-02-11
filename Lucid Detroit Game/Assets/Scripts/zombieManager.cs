@@ -32,6 +32,8 @@ public class zombieManager : MonoBehaviour {
         if(other.gameObject.tag == heroBullet)
         {
             Debug.Log("ay");
+            Debug.Log(playerManager.dmg);
+            Destroy(other.gameObject);
             currentHealth -= playerManager.dmg;
             if(currentHealth <= 0 && !isDead)
             {

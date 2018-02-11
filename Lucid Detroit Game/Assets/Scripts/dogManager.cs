@@ -37,6 +37,7 @@ public class dogManager : MonoBehaviour
         if (other.gameObject.tag == heroBullet)
         {
             currentHealth -= playerManager.dmg;
+            Destroy(other.gameObject);
             if (currentHealth <= 0 && !isDead)
             {
                 Death();
