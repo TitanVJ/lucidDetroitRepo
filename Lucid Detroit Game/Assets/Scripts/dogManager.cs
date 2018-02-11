@@ -7,7 +7,7 @@ public class dogManager : MonoBehaviour
     public int initHealth = 20;
     public int currentHealth;
     public int dmg = 5;
-    public float fireRate = 0.5f;
+    public float fireRate = 5f;
 
     string heroBullet = "heroBullet";
     string player = "Player";

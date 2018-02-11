@@ -19,8 +19,8 @@ public class PlayerManager : MonoBehaviour {
     string dogManagerTag = "dogManager";
     dogManager dogManager;
 
+    bool damaged = false;
     bool isDead;
-    bool damagedByDog = false;
     
 	// Use this for initialization
 	void Start () {
@@ -32,34 +32,45 @@ public class PlayerManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {//dmg indicators. update the slider for health
-        
-        if(damagedByDog)
-        {
-            currentHealth -= dogManager.dmg;
-
-        }
         if (currentHealth <= 0 && !isDead)
         {
             Death();
         }
     }
 
+    //void OnTriggerStay2D(Collider2D other)
+    //{
+    //    if (other.gameObject.tag == dogManagerTag)
+    //    {
+
+    //        damaged = true;
+    //        StartCoroutine(attackSpeed());
+    //    }
+    //}
+    IEnumerator attackSpeed()
+	{
+
+        while (!isDead)
+        {
+            currentHealth -= dogManager.dmg;
+            yield return new WaitForSecondsRealtime(dogManager.fireRate);
+            damaged = false;
+        }
+
+	}
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        //if(other.gameObject.tag == "heroBullet")//delete the bullet if it hits the player:: its buggy rn czu it delets rnightwaya at spnw
-        //{
-        //    Debug.Log("shig");
-        //    //Destroy(other.gameObject);
-
-    //}
         if (other.gameObject.tag == enemyBullet)//
         {
             currentHealth -= zombieManager.dmg;
         }
+
          if (other.gameObject.tag == dogManagerTag)
         {
             Debug.Log("doge");
-            damagedByDog = true;
+            //currentHealth -= dogManager.dmg;
+            StartCoroutine(attackSpeed());
         }
 
          if(other.gameObject.tag == "vodka" )
@@ -117,6 +128,7 @@ public class PlayerManager : MonoBehaviour {
 
         //maybe add particle effect later
         //for now just have destroy
+        FindObjectOfType<Enemy>().enabled = false;
         Destroy(gameObject);
     }
 }
