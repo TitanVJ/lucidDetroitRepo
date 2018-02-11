@@ -13,6 +13,8 @@ TagManager:
   - tequila
   - jager
   - water
+  - healthBar
+  - drunkBar
   layers:
   - Default
   - TransparentFX

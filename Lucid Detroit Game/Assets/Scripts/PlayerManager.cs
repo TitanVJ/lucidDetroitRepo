@@ -30,10 +30,12 @@ public class PlayerManager : MonoBehaviour {
         zombieManager = FindObjectOfType<zombieManager>();
         dogManager = FindObjectOfType<dogManager>();
         playerShoot = FindObjectOfType<PlayerShoot>();
+        //healthBar = GameObject.FindGameObjectWithTag("healthBar");
+        //drunkBar = GameObject.FindGameObjectWithTag("drunkBar");
 	}
-	
-	// Update is called once per frame
-	void Update () {//dmg indicators. update the slider for health
+
+    // Update is called once per frame
+    private void Update () {//dmg indicators. update the slider for health
         if (currentHealth <= 0 && !isDead)
         {
             Death();
