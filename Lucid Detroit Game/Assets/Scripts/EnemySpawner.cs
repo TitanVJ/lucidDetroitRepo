@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject groundPlane;
 
-    public float spawnY = 2.5f;
+    public float spawnY = -2f;
 
     private Vector3 _spawnBounds;
     public GameObject playerObj;
@@ -51,10 +51,6 @@ public class EnemySpawner : MonoBehaviour
         {
             GameObject clone = Instantiate(enemyPrefab, FindSpawnPosition(), Quaternion.identity);
 
-            // Set a random colour.
-            Color newColour = Random.ColorHSV();
-            Material mat = clone.GetComponent<MeshRenderer>().material;
-            mat.color = newColour;
 
             Enemy en = clone.GetComponent<Enemy>();
             en.playerObj = playerObj;
