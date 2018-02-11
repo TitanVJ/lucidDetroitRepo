@@ -13,22 +13,26 @@ public class PlayerMove : MonoBehaviour
     private SpriteRenderer mySpriteRenderer;
     public Transform spawnPoint;
 	private Vector3 flipPos;
+	public float fireRate;
 
 
 
     // Use this for initialization
     void Start ()
     {
+		//Gets a RigidBody2D if it isn't found.
         if(rb == null)
         {
             rb = GetComponent<Rigidbody2D>();
 
         }
+		//Assigning values to variables etc.
         rb.freezeRotation = true;
         pShoot = FindObjectOfType<PlayerShoot>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
 		spawnPoint = GameObject.Find("barrelTip").GetComponent<Transform>();
 		flipPos = spawnPoint.transform.localPosition;
+		fireRate = 0.15f;
 
     }
 	
@@ -67,8 +71,15 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            pShoot.shootBullet();
+            
+			StartCoroutine(attackSpeed());
         }
+
+		if (Input.GetKeyUp(KeyCode.Space))
+		{
+
+			StopCoroutine(attackSpeed());
+		}
 
     }
 
@@ -83,5 +94,15 @@ public class PlayerMove : MonoBehaviour
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
+
+	IEnumerator attackSpeed()
+	{
+		while (Input.GetKey (KeyCode.Space) == true) 
+		{
+			pShoot.shootBullet ();
+			yield return new WaitForSecondsRealtime (fireRate);
+		}
+
+	}
 
 }

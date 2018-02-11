@@ -210,6 +210,7 @@ MonoBehaviour:
   player: {fileID: 1792552026}
   offsetRight: {x: 0, y: 0, z: 0}
   offsetLeft: {x: 0, y: 0, z: 0}
+  zoomSize: 5
 --- !u!1 &181308558
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,6 +604,7 @@ MonoBehaviour:
   fallMultiplier: 9
   lowJumpMultiplier: 2
   spawnPoint: {fileID: 0}
+  fireRate: 0.15
 --- !u!114 &1792552030
 MonoBehaviour:
   m_ObjectHideFlags: 0
