@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour {
+public class PlayerManager : MonoBehaviour {
     public int initHealth = 100;
     public int currentHealth;
-    public Slider healathBar;
+
+    public int dmg = 10;
+    public Slider healthBar;
     //assets for anims and audio
 
     PlayerMove playerMove;
+    zombieManager zombieManager;
+    dogManager dogManager;
+
     bool isDead;
     bool damaged;
     
@@ -24,11 +29,24 @@ public class PlayerHealth : MonoBehaviour {
         
 	}
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == zombieManager)
+        {
+
+        }
+        else if (other.gameObject == dogManager)
+        {
+
+        }
+    }
+
+
     public void takeDamage(int dmgAmount)
     {
         //damaged = true;
         currentHealth -= dmgAmount;
-        healathBar.value = currentHealth;
+        healthBar.value = currentHealth;
 
         if(currentHealth <= 0 && !isDead)
         {
