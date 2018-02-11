@@ -330,6 +330,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d59b8f5b900be44bafb7a131a43140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1640295665519166, guid: 04853006e8e0a6f42837159f5ca10eb8,
+    type: 2}
+  groundPlane: {fileID: 1206081853}
+  spawnY: 2.5
+  playerObj: {fileID: 1792552026}
 --- !u!4 &665388885
 Transform:
   m_ObjectHideFlags: 0
@@ -488,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5526b082f47da48b7e021f1fb05428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPre: {fileID: 1694752555856356, guid: d459ac6e2bc64fd42abae88cd8d4aea1, type: 2}
+  bulletPre: {fileID: 1694752555856356, guid: 142bc1a632106fa4fa74776d9de8a0b7, type: 2}
   spawnPoint: {fileID: 316531263}
   bulletSpeed: 3
 --- !u!4 &1686721857
@@ -595,7 +600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 10
-  fallMultiplier: 1.25
+  fallMultiplier: 9
   lowJumpMultiplier: 2
   spawnPoint: {fileID: 0}
 --- !u!114 &1792552030
@@ -609,7 +614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a394baf0d182ade46af6ce299fe30bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpVelocity: 6
+  jumpVelocity: 50
 --- !u!61 &1792552031
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -646,10 +651,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
