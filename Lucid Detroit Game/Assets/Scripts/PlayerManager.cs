@@ -4,10 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour {
-<<<<<<< HEAD
 
-=======
->>>>>>> 6eebfc14b6c62e7d1ec10d48f77a5e7c44e15e98
     public int initHealth = 100;
     public int currentHealth;
 
