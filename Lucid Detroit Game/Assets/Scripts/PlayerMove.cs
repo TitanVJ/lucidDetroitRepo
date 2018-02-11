@@ -20,11 +20,13 @@ public class PlayerMove : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+		//Gets a RigidBody2D if it isn't found.
         if(rb == null)
         {
             rb = GetComponent<Rigidbody2D>();
 
         }
+		//Assigning values to variables etc.
         rb.freezeRotation = true;
         pShoot = FindObjectOfType<PlayerShoot>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
