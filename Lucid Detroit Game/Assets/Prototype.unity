@@ -604,7 +604,7 @@ MonoBehaviour:
   jumpForce: 10
   fallMultiplier: 9
   lowJumpMultiplier: 2
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 316531263}
   fireRate: 0
   animator: {fileID: 1792552033}
 --- !u!114 &1792552030
